@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>刷题与ZZ错误记录7 | zhtg的博客</title>
+  <meta name="author" content="zhtg" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="涉及题目：  洛谷 U87838 高级打字机  洛谷 P3379 【模板】最近公共祖先（LCA）  洛谷 P3398 仓鼠找sugar  洛谷 T98890 抵御寒冷(cold)  洛谷 T98892 简单的问题(easy)  洛谷 U87838 高级打字机先放个朴素算法压压惊(100&#x2F;200)1234567891011121314151617181920212223#include&lt;bit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题与ZZ错误记录7">
+<meta property="og:url" content="https://zhtg.red/2019/09/21/%E5%88%B7%E9%A2%98%E4%B8%8Ezz%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%957/index.html">
+<meta property="og:site_name" content="zhtg的博客">
+<meta property="og:description" content="涉及题目：  洛谷 U87838 高级打字机  洛谷 P3379 【模板】最近公共祖先（LCA）  洛谷 P3398 仓鼠找sugar  洛谷 T98890 抵御寒冷(cold)  洛谷 T98892 简单的问题(easy)  洛谷 U87838 高级打字机先放个朴素算法压压惊(100&#x2F;200)1234567891011121314151617181920212223#include&lt;bit">
+<meta property="og:locale">
+<meta property="og:image" content="https://zhtg.red/null">
+<meta property="article:published_time" content="2019-09-21T14:27:27.000Z">
+<meta property="article:modified_time" content="2021-06-03T10:01:02.049Z">
+<meta property="article:author" content="zhtg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhtg.red/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">zhtg的博客</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>zhtg的博客</h2> <br />
+                        <span>None</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">刷题与ZZ错误记录7</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2019-09-21</li>
+                    <li><i class="fa fa-user"></i> 作者 zhtg</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~14.12K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1622714462049"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <h2 id="涉及题目："><a href="#涉及题目：" class="headerlink" title="涉及题目："></a>涉及题目：</h2><ol>
+<li> <a href="http://zhtg.red/blog/2019/09/21/%e5%88%b7%e9%a2%98%e4%b8%8ezz%e9%94%99%e8%af%af%e8%ae%b0%e5%bd%957/2/">洛谷 U87838 高级打字机</a></li>
+<li> <a href="http://zhtg.red/blog/2019/09/21/%e5%88%b7%e9%a2%98%e4%b8%8ezz%e9%94%99%e8%af%af%e8%ae%b0%e5%bd%957/3/">洛谷 P3379 【模板】最近公共祖先（LCA）</a></li>
+<li> <a href="http://zhtg.red/blog/2019/09/21/%e5%88%b7%e9%a2%98%e4%b8%8ezz%e9%94%99%e8%af%af%e8%ae%b0%e5%bd%957/4/">洛谷 P3398 仓鼠找sugar</a></li>
+<li> <a href="http://zhtg.red/blog/2019/09/21/%e5%88%b7%e9%a2%98%e4%b8%8ezz%e9%94%99%e8%af%af%e8%ae%b0%e5%bd%957/5/">洛谷 T98890 抵御寒冷(cold)</a></li>
+<li> <a href="http://zhtg.red/blog/2019/09/21/%e5%88%b7%e9%a2%98%e4%b8%8ezz%e9%94%99%e8%af%af%e8%ae%b0%e5%bd%957/6/">洛谷 T98892 简单的问题(easy)</a></li>
+</ol>
+<h1 id="洛谷-U87838-高级打字机"><a href="#洛谷-U87838-高级打字机" class="headerlink" title="洛谷 U87838 高级打字机"></a>洛谷 U87838 高级打字机</h1><h2 id="先放个朴素算法压压惊-100-200"><a href="#先放个朴素算法压压惊-100-200" class="headerlink" title="先放个朴素算法压压惊(100/200)"></a>先放个朴素算法压压惊(100/200)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">char</span> sta[<span class="number">200000</span>],tmp;</span><br><span class="line">string cmd;</span><br><span class="line"><span class="keyword">int</span> n,a,top;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;cmd;</span><br><span class="line">        <span class="keyword">if</span>(cmd[<span class="number">0</span>]==<span class="string">&#x27;T&#x27;</span>)&#123;</span><br><span class="line">            cin&gt;&gt;cmd;</span><br><span class="line">            sta[++top]=cmd[<span class="number">0</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cmd[<span class="number">0</span>]==<span class="string">&#x27;Q&#x27;</span>)&#123;</span><br><span class="line">            cin&gt;&gt;a;</span><br><span class="line">            cout&lt;&lt;sta[a]&lt;&lt;endl;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cmd[<span class="number">0</span>]==<span class="string">&#x27;U&#x27;</span>)&#123;</span><br><span class="line">            cin&gt;&gt;a;</span><br><span class="line">            <span class="keyword">while</span>(a--)&#123;</span><br><span class="line">                top--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="洛谷-P3379-【模板】最近公共祖先（LCA）"><a href="#洛谷-P3379-【模板】最近公共祖先（LCA）" class="headerlink" title="洛谷 P3379 【模板】最近公共祖先（LCA）"></a>洛谷 P3379 【模板】最近公共祖先（LCA）</h1><h2 id="AC模板"><a href="#AC模板" class="headerlink" title="AC模板"></a>AC模板</h2><p>(我学的是一本通提高篇的，所以跟提高篇上的差不多)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">500005</span>],nxt[<span class="number">1000005</span>],go[<span class="number">1000005</span>],cnt;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">500005</span>][<span class="number">21</span>],dep[<span class="number">500005</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,s,a,b;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;          <span class="comment">//先把每个节点的爸爸们找出来，用倍增可以少找许多个爸爸</span></span><br><span class="line">    dep[u]=dep[fa]+<span class="number">1</span>;                   <span class="comment">//首先深度加一，后面判断深度可用</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">19</span>;i++)&#123;             <span class="comment">//找他的2^0,2^1,……,2^20个爸爸</span></span><br><span class="line">        f[u][i+<span class="number">1</span>]=f[f[u][i]][i];        <span class="comment">//一个神秘的点，u的2^(i+1)个爸爸 等于 从u的2^i个爸爸处 向上找2^i个爸爸</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;      <span class="comment">//往深了搜</span></span><br><span class="line">        <span class="keyword">int</span> v=go[i];</span><br><span class="line">        <span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        f[v][<span class="number">0</span>]=u;                      <span class="comment">//定义</span></span><br><span class="line">        <span class="built_in">dfs</span>(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;        <span class="comment">//加边</span></span><br><span class="line">    nxt[++cnt]=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">    go[cnt]=v;</span><br><span class="line">    nxt[++cnt]=head[v];</span><br><span class="line">    head[v]=cnt;</span><br><span class="line">    go[cnt]=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dep[x]&lt;dep[y])&#123;                  <span class="comment">//故意让x的深度比y大</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)&#123;             <span class="comment">//先让较深的节点x的深度与y相同</span></span><br><span class="line">        <span class="keyword">if</span>(dep[f[x][i]]&gt;=dep[y])&#123;       <span class="comment">//如果不在y的上面</span></span><br><span class="line">            x=f[x][i];                  <span class="comment">//往上跳2^i次</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x==y)&#123;                       <span class="comment">//正好是同一个父亲，可以退出</span></span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(f[x][i]!=f[y][i])&#123;           <span class="comment">//不是同一个爸爸，向上跳</span></span><br><span class="line">            x=f[x][i];y=f[y][i];        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f[x][<span class="number">0</span>]?f[x][<span class="number">0</span>]:s;           <span class="comment">//跳得太高就跳到根节点吧</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="built_in">insert</span>(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(s,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">lca</span>(a,b));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="洛谷-P3398-仓鼠找sugar"><a href="#洛谷-P3398-仓鼠找sugar" class="headerlink" title="洛谷 P3398 仓鼠找sugar"></a>洛谷 P3398 仓鼠找sugar</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>打LCA模板的时候顺便1A掉的一道题 直接套模板即可 不过我至少学会了树上两点的距离：$L_{AB}=deep[A]-deep[LCA(A,B)]+deep[B]-deep[LCA(A,B)]=deep[A]+deep[B]-2times deep[LCA(A,B)]$ 还学会了判断一个点是否在树上两点的路径上：$C在AB上：L_{AB}==L_{AC}+L_{BC}$</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">500005</span>],nxt[<span class="number">1000005</span>],go[<span class="number">1000005</span>],cnt;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">500005</span>][<span class="number">21</span>],dep[<span class="number">500005</span>],ru[<span class="number">500005</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,s,a,b,c,d;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    dep[u]=dep[fa]+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">19</span>;i++)&#123;</span><br><span class="line">        f[u][i+<span class="number">1</span>]=f[f[u][i]][i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=go[i];</span><br><span class="line">        <span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        f[v][<span class="number">0</span>]=u;</span><br><span class="line">        <span class="built_in">dfs</span>(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    nxt[++cnt]=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">    go[cnt]=v;</span><br><span class="line">    nxt[++cnt]=head[v];</span><br><span class="line">    head[v]=cnt;</span><br><span class="line">    go[cnt]=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dep[x]&lt;dep[y])&#123;</span><br><span class="line">        <span class="built_in">swap</span>(x,y); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(dep[f[x][i]]&gt;=dep[y])&#123;</span><br><span class="line">            x=f[x][i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x==y)&#123;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(f[x][i]!=f[y][i])&#123;</span><br><span class="line">            x=f[x][i];y=f[y][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f[x][<span class="number">0</span>]?f[x][<span class="number">0</span>]:s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dist</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dep[a]+dep[b]-dep[<span class="built_in">lca</span>(a,b)]*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="built_in">insert</span>(a,b);</span><br><span class="line">        ru[b]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!ru[i])&#123;</span><br><span class="line">            s=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(s,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d);</span><br><span class="line">        <span class="keyword">int</span> fa=<span class="built_in">lca</span>(a,b),fb=<span class="built_in">lca</span>(c,d);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">dist</span>(fa,c)+<span class="built_in">dist</span>(fa,d)==<span class="built_in">dist</span>(c,d))&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Yn&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">dist</span>(fb,a)+<span class="built_in">dist</span>(fb,b)==<span class="built_in">dist</span>(a,b))&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Yn&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Nn&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="洛谷-T98890-抵御寒冷-cold"><a href="#洛谷-T98890-抵御寒冷-cold" class="headerlink" title="洛谷 T98890 抵御寒冷(cold)"></a>洛谷 T98890 抵御寒冷(cold)</h1><h2 id="标准题解"><a href="#标准题解" class="headerlink" title="标准题解"></a>标准题解</h2><p>$N^3$的暴力很显然，$N^2 log N$的方法只需要在暴力上稍加改进就行了。$N^2$的方法也比较明显，只要对$N_i$, $M_i$, $K_i$进行排序。然后$N_i$和$M_i$依次从小到大枚举，根据 $N_x+M_y+K_z leq C to K_z leq C - N_x - M_y$ 随着$N_x+M_y$的增大$K_z$只能不断减小。所以$K_z$不需要枚举。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>我表示，按照这个题解打一份代码，总能A吧？结果还不是跟我那个$O(N^2logN)$一样TLE5个点。（难道是我这个蒟蒻太渣了曲解了题解？）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> xi[<span class="number">10000</span>],yi[<span class="number">10000</span>],zi[<span class="number">10000</span>]; </span><br><span class="line"><span class="keyword">int</span> nx,ny,nz,c,t,tt;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;cold.in&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin); </span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;cold.out&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;nx,&amp;ny,&amp;nz,&amp;c);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nx;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;xi[i]);</span><br><span class="line">    &#125;<span class="built_in">sort</span>(xi+<span class="number">1</span>,xi+nx+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=ny;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;yi[i]);</span><br><span class="line">    &#125;<span class="built_in">sort</span>(yi+<span class="number">1</span>,yi+ny+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nz;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;zi[i]);</span><br><span class="line">    &#125;<span class="built_in">sort</span>(zi+<span class="number">1</span>,zi+nz+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nx;i++)&#123;</span><br><span class="line">        t=c-xi[<span class="number">1</span>]-yi[<span class="number">1</span>];</span><br><span class="line">        tt=<span class="built_in">lower_bound</span>(zi+<span class="number">1</span>,zi+nz+<span class="number">1</span>,t)-zi<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=ny;j++)&#123;</span><br><span class="line">            t=c-xi[i]-yi[j];</span><br><span class="line">            <span class="keyword">while</span>(tt &amp;&amp; zi[tt]&gt;=t)&#123;</span><br><span class="line">                tt--;</span><br><span class="line">            &#125;tt++;</span><br><span class="line">            sum+=nz-tt+<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//cout&lt;&lt;xi[i]&lt;&lt;&quot;t&quot;&lt;&lt;yi[j]&lt;&lt;&quot;t&quot;&lt;&lt;zi[tt]&lt;&lt;&quot;t&quot;&lt;&lt;sum&lt;&lt;&quot;t&quot;&lt;&lt;endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仔细一看，原来标准题解里竟然有这么一句话：</p>
+<blockquote>
+<p>……只要对$N_i$, $M_i$, $K_i$进行排序。<strong>然后$N_i$和$M_i$依次从小到大枚举……</strong></p>
+</blockquote>
+<p>这样枚举不就跟$O(N^2logN)$找最适合$K_i$一样了吗？<br><strong>于是本人索性就对标准题解进行一点修改</strong><br>核心还是根据：</p>
+<blockquote>
+<p><strong>$N_x+M_y+K_z leq C to K_z leq C - N_x - M_y$随着$N_x+M_y$的增大$K_z$只能不断减小。</strong></p>
+</blockquote>
+<p>首先，我索性不排序了，读入第二组数据时直接按照$C-N_i-M_j$计数，然后来个前缀和，<strong>求出当$K_k$值等于$C_k$的时候有几种组合满足条件（说白了类似于按照$N_i+M_j$计数排序而不是按照$N_i$和$M_i$依次枚举）。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读入题面中Ji的值</span></span><br><span class="line"><span class="comment">//cnt[i]表示对于k值为i的内衣有多少种搭配的可能</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=ny;j++)&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;yi[j]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nx;i++)&#123;<span class="comment">//直接枚举就行了，排甚么序</span></span><br><span class="line">        <span class="keyword">if</span>(c-xi[i]-yi[j]&lt;=<span class="number">0</span>)&#123;<span class="comment">//注意如果ix+jy大于c，对于任意的kz都有效，也就是随便找一件内衣就能满足要求</span></span><br><span class="line">            cnt[<span class="number">0</span>]++;<span class="comment">//就直接累加在0上吧，无论穿什么内衣效果都等于没穿内衣</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cnt[c-xi[i]-yi[j]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=c;i++)&#123;<span class="comment">//计算前缀和，K值越大的内衣可以有更多的组合</span></span><br><span class="line">    cnt[i]+=cnt[i<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样一个$O(N^2)$的预处理完了，输入第三组时我们就可以用$O(1)$直接累加答案（<code>long long</code>大法好）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nz;i++)&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;zi[i]);</span><br><span class="line">    sum+=cnt[zi[i]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,sum);</span><br></pre></td></tr></table></figure>
+
+<p>Done</p>
+<h2 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> xi[<span class="number">10000</span>],yi[<span class="number">10000</span>],zi[<span class="number">10000</span>]; </span><br><span class="line"><span class="keyword">int</span> nx,ny,nz,c,t,tt,cnt[<span class="number">200000</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;cold.in&quot;,&quot;r&quot;,stdin); </span></span><br><span class="line">    <span class="comment">//freopen(&quot;cold.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;nx,&amp;ny,&amp;nz,&amp;c);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nx;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;xi[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=ny;j++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;yi[j]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nx;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c-xi[i]-yi[j]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">                cnt[<span class="number">0</span>]++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[c-xi[i]-yi[j]]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=c;i++)&#123;</span><br><span class="line">        cnt[i]+=cnt[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nz;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;zi[i]);</span><br><span class="line">        sum+=cnt[zi[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="洛谷-T98892-简单的问题-easy"><a href="#洛谷-T98892-简单的问题-easy" class="headerlink" title="洛谷 T98892 简单的问题(easy)"></a>洛谷 T98892 简单的问题(easy)</h1><h2 id="标准题解-1"><a href="#标准题解-1" class="headerlink" title="标准题解"></a>标准题解</h2><p>有种思想叫以空间换时间。于是就产生了一种实现方法。叫打表。首先在自己的机器上把$1..100000000$内的素数全部计算出来。然后分块统计就可以了。譬如说把 $1..100000000$分成$10000$份，每份$10000$个数字。那么统计a..b内的素数个数复杂度就是$10000$了。</p>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>这题就一个字：<strong>拆</strong>！ 我至少学会了在两个较大的数，其间距较小的情况下如何加速素数筛的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sushu</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="comment">//看我手撸两值之差在15000以内的素数！用于处理头尾的零碎</span></span><br><span class="line">    <span class="keyword">int</span> c=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(flag1,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(flag1));                  <span class="comment">//小数筛，用来处理15000以内的质数</span></span><br><span class="line">    <span class="built_in">memset</span>(flag2,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(flag2));                  <span class="comment">//大数筛，处理最大值超过15000的数的时候会派上用场</span></span><br><span class="line">    flag1[<span class="number">1</span>]=flag1[<span class="number">0</span>]=<span class="literal">true</span>; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(b);i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(flag1[i])<span class="keyword">continue</span>;                       <span class="comment">//做小数筛的时候判断这个约数是否是合数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=<span class="built_in">min</span>(<span class="number">15000</span>,b);j+=i)&#123;</span><br><span class="line">            flag1[j]=<span class="literal">true</span>;                          <span class="comment">//处理小数筛，决定一个约数的时候要用</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(b&lt;=<span class="number">15000</span>)<span class="keyword">continue</span>;                       <span class="comment">//没必要用大数筛的时候就别用了吧</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="built_in">floor</span>(a/(<span class="keyword">double</span>)i)*i;j&lt;=b;j+=i)&#123;</span><br><span class="line">            flag2[j-a]=<span class="literal">true</span>;                        <span class="comment">//处理大数筛，要从最靠近最小的数的那个约数的倍数开始，通过减去最小数来保存在一个不大的数组里</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(b&gt;<span class="number">15000</span>)&#123;                                    <span class="comment">//能用小数筛就别用大数筛</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=a;i&lt;=b;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag2[i-a])c++;                     <span class="comment">//还是要记得减去a</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;<span class="comment">//使用小数筛</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=a;i&lt;=b;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag1[i])c++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//printf(&quot;MAN [%dt,t%d]t=t%dn&quot;,a,b,c);</span></span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还知道了该打暴力就打暴力，<strong>打表不仅能过样例，还能出奇迹</strong>。</p>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>听说有人看不懂，还说要快速筛？（事实证明即学即用的快速筛碰到极端数据还是TLE） 简单讲一下吧。 我们已知最简单的筛是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有任何优化的筛</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(b);i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag[i])<span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=n;j+=i)&#123;</span><br><span class="line">        flag[j]=<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行过程如下：</p>
+<p>i</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>……</p>
+<p>99999998</p>
+<p>99999999</p>
+<p>flag[i]</p>
+<p>F</p>
+<p>F</p>
+<p>T</p>
+<p>F</p>
+<p>……</p>
+<p>T</p>
+<p>T</p>
+<p>当我们求$99990001-100000000$的时候，哪些部分是有用的呢？ 接下来我们设$a=99990001,b=100000000$：</p>
+<ol>
+<li> $&lt;sqrt{b}$的部分。这些部分都有可能成为最大数$b$的因数</li>
+<li> $a-b$的部分。我们要求的就是它，为什么不认为他是有用的呢？</li>
+</ol>
+<p>然后，我们发现，$(min(sqrt{b},a),a)$的部分，其实是没有用的！为什么呢？ 首先，我们发现，这部分数不包含在$1$条件中，所以他们即使是最大值$b$的因数，也可以通过已知的因数(计算$1$)得到！这部数也不会包含在要统计的$2$中（显然）。所以，他们是废的！ 于是乎，我们的大数小范围筛就出来了。 我们把这样一张表：</p>
+<p>2</p>
+<p>3</p>
+<p>……</p>
+<p>10000</p>
+<p>10001</p>
+<p>……</p>
+<p>99990000</p>
+<p>99990001</p>
+<p>……</p>
+<p>99999998</p>
+<p>99999999</p>
+<p>拆成2张表：</p>
+<p>小数筛</p>
+<p>2</p>
+<p>3</p>
+<p>……</p>
+<p>10000</p>
+<p>大数筛</p>
+<p>99990001</p>
+<p>……</p>
+<p>99999999</p>
+<p>100000000</p>
+<p>原先可能要$O(b^2)$的算法瞬间被简化到$O((sqrt{b})^2)+O((b-a)^2)$，当$b$值较大而$b-a$值较小时优化还是很明显的。 还有就是分块思想。原先可能要从$5000$算到$99995000$的程序，可以通过以下操作打表！</p>
+<p>5000-10000</p>
+<p>10001-20000</p>
+<p>……</p>
+<p>99980001-99990000</p>
+<p>99990001-99995000</p>
+<p>小范围筛</p>
+<p>打表</p>
+<p>打表</p>
+<p>打表</p>
+<p>小范围筛</p>
+<p>至于这个打表程序……普通的筛筛一次得到的数组可以用许多次，所以直接暴力普通筛即可（可参考AC代码）。</p>
+<h2 id="槽点"><a href="#槽点" class="headerlink" title="槽点"></a>槽点</h2><ol>
+<li> （60分）一开始没有特判导致在10000以内的两个数计算素数个数时首尾算了两次 比如<code>15 987</code>：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAN [15,10000]=1223</span><br><span class="line">MAN [10001,987]=0</span><br></pre></td></tr></table></figure>
+
+<p>应该加个特判：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(b-a&lt;<span class="number">10000</span>)&#123;<span class="comment">//这时用分块就显得没必要</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,<span class="built_in">sushu</span>(a,b));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li> （80分）没错，我的手动算素数代码竟然没在数值在15000以内时判定1和0不是素数！</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag[<span class="number">1</span>]=flag[<span class="number">0</span>]=<span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li> （90分）为了演示槽点1把他注释掉了，修复槽点2后却忘了把他改回来……</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(b-a&lt;<span class="number">10000</span>)&#123;<span class="comment">//这时用分块就显得没必要</span></span><br><span class="line">    <span class="comment">//【槽点1】：这时不特殊处理他还会算俩次</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,<span class="built_in">sushu</span>(a,b));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AC代码-2"><a href="#AC代码-2" class="headerlink" title="AC代码"></a>AC代码</h2><h3 id="首先是暴力和数据生成器"><a href="#首先是暴力和数据生成器" class="headerlink" title="首先是暴力和数据生成器"></a>首先是暴力和数据生成器</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//因为是打表代码我就不注释了</span></span><br><span class="line"><span class="comment">//反正是求1-10000,10001-20000……的答案</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> flag[<span class="number">200000000</span>];</span><br><span class="line"><span class="keyword">int</span> a,b,c;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;easy.in&quot;)</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;easy.out&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout);<span class="comment">//文件输出，复制方便！</span></span><br><span class="line">    a=<span class="number">1</span>;b=<span class="number">10000</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(<span class="number">100000005</span>);i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(flag[i])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=<span class="number">100000005</span>;j+=i)&#123;</span><br><span class="line">            flag[j]=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    flag[<span class="number">1</span>]=flag[<span class="number">0</span>]=<span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;int fenkuai[20000]=&#123;&quot;</span>);<span class="comment">//按格式输出，即输即用！</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> <span class="keyword">_t</span>=<span class="number">1</span>;<span class="keyword">_t</span>&lt;=<span class="number">10000</span>;<span class="keyword">_t</span>++)&#123;</span><br><span class="line">        c=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=a;i&lt;=b;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag[i])c++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">_t</span>!=<span class="number">10000</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d,&quot;</span>,c);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,c);</span><br><span class="line">        &#125;</span><br><span class="line">        a+=<span class="number">10000</span>;b+=<span class="number">10000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;&#125;;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="然后是提交的程序"><a href="#然后是提交的程序" class="headerlink" title="然后是提交的程序"></a>然后是提交的程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//请不要尝试直接提交本程序</span></span><br><span class="line"><span class="comment">//此处填写使用暴力生成器在easy.out里输出的结果</span></span><br><span class="line"><span class="keyword">int</span> a,b,kkk;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum;</span><br><span class="line"><span class="keyword">bool</span> flag1[<span class="number">20000</span>],flag2[<span class="number">20000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sushu</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="comment">//看我手撸两值之差在15000以内的素数！用于处理头尾的零碎</span></span><br><span class="line">    <span class="keyword">int</span> c=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(flag1,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(flag1));                  <span class="comment">//小数筛，用来处理15000以内的质数</span></span><br><span class="line">    <span class="built_in">memset</span>(flag2,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(flag2));                  <span class="comment">//大数筛，处理最大值超过15000的数的时候会派上用场</span></span><br><span class="line">    flag1[<span class="number">1</span>]=flag1[<span class="number">0</span>]=<span class="literal">true</span>; </span><br><span class="line">    <span class="comment">//【槽点2】：如果是15000之内的数，直接使用小数筛时要注意1和0不能算质数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(b);i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(flag1[i])<span class="keyword">continue</span>;                       <span class="comment">//做小数筛的时候判断这个约数是否是合数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=<span class="built_in">min</span>(<span class="number">15000</span>,b);j+=i)&#123;</span><br><span class="line">            flag1[j]=<span class="literal">true</span>;                          <span class="comment">//处理小数筛，决定一个约数的时候要用</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(b&lt;=<span class="number">15000</span>)<span class="keyword">continue</span>;                       <span class="comment">//没必要用大数筛的时候就别用了吧</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="built_in">floor</span>(a/(<span class="keyword">double</span>)i)*i;j&lt;=b;j+=i)&#123;</span><br><span class="line">            flag2[j-a]=<span class="literal">true</span>;                        <span class="comment">//处理大数筛，要从最靠近最小的数的那个约数的倍数开始，通过减去最小数来保存在一个不大的数组里</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(b&gt;<span class="number">15000</span>)&#123;                                    <span class="comment">//能用小数筛就别用大数筛</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=a;i&lt;=b;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag2[i-a])c++;                     <span class="comment">//还是要记得减去a</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;<span class="comment">//使用小数筛</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=a;i&lt;=b;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag1[i])c++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//printf(&quot;MAN [%dt,t%d]t=t%dn&quot;,a,b,c);</span></span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="comment">//【槽点3】：之前调试的时候注释掉了，但忘了改回来</span></span><br><span class="line">    <span class="keyword">if</span>(b-a&lt;<span class="number">10000</span>)&#123;                                  <span class="comment">//这时用分块就显得没必要</span></span><br><span class="line">        <span class="comment">//【槽点1】：这时不特殊处理他还会算俩次</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,<span class="built_in">sushu</span>(a,b));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sum+=<span class="built_in">sushu</span>(a,<span class="built_in">ceil</span>(a/<span class="number">10000.0</span>)*<span class="number">10000</span>);</span><br><span class="line">    <span class="keyword">for</span>(kkk=<span class="built_in">ceil</span>(a/<span class="number">10000.0</span>)*<span class="number">10000</span>+<span class="number">1</span>;kkk+<span class="number">9999</span>&lt;b;kkk+=<span class="number">10000</span>)&#123;</span><br><span class="line">        <span class="comment">//printf(&quot;DB  [%dt,t%d]t=t%dn&quot;,kkk,kkk+9999,fenkuai[(kkk-1)/10000]);</span></span><br><span class="line">        sum+=fenkuai[(kkk<span class="number">-1</span>)/<span class="number">10000</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    sum+=<span class="built_in">sushu</span>(kkk,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://zhtg.red/2019/09/21/%E5%88%B7%E9%A2%98%E4%B8%8Ezz%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%957/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://zhtg.red/2019/09/21/%E5%88%B7%E9%A2%98%E4%B8%8Ezz%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%957/";
+            const title         = "「刷题与ZZ错误记录7」";
+            const excerpt       = `涉及题目：
+ 洛谷 U87838 高级打字机
+ 洛谷 P3379 【模板】最近公共祖先（LCA）
+ 洛谷 P3398 仓鼠找sugar
+ 洛谷 T98890 抵御寒冷(cold)
+ 洛谷 T98892 简单的问题(easy)
+
+洛谷 ...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-06-03</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 刷题与ZZ错误记录6" href="/2019/09/16/刷题与zz错误记录6/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 刷题与ZZ错误记录8" href="/2019/09/30/刷题与zz错误记录8/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">准高三咸鱼，AFO的OIer</p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OIer%E4%B9%8B%E8%B7%AF/">OIer之路</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E5%88%B7%E7%9C%9F%E9%A2%98/">刷刷真题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E5%B1%B1%E7%89%B9%E9%81%A3%E9%98%9F/">后山特遣队</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%9E%E5%BF%86%E4%B8%9C%E5%8D%97/">回忆东南</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E6%80%AA%E9%A2%98%E7%9B%AE/">奇怪题目</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/">好好学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%99%BE%E6%80%81/">生活百态</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%A4%87%E5%BF%98%E5%BD%95/">算法备忘录</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8F%8A%E8%90%BD%E5%87%A4%E8%B5%B7/">菊落凤起</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%A3%E9%A2%98%E6%97%A5%E5%BF%97/">解题日志</a><span class="category-list-count">31</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2013/" style="font-size: 0.65em;">2013</a> <a href="/tags/2014/" style="font-size: 0.6em;">2014</a> <a href="/tags/2015/" style="font-size: 0.6em;">2015</a> <a href="/tags/GUIDE/" style="font-size: 0.6em;">GUIDE</a> <a href="/tags/Linux/" style="font-size: 0.6em;">Linux</a> <a href="/tags/NOILinux/" style="font-size: 0.6em;">NOILinux</a> <a href="/tags/NOIP/" style="font-size: 0.8em;">NOIP</a> <a href="/tags/Ubuntu/" style="font-size: 0.6em;">Ubuntu</a> <a href="/tags/arbiter/" style="font-size: 0.6em;">arbiter</a> <a href="/tags/bfs/" style="font-size: 0.6em;">bfs</a> <a href="/tags/livecd/" style="font-size: 0.6em;">livecd</a> <a href="/tags/%E5%88%9D%E8%B5%9B/" style="font-size: 0.6em;">初赛</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 0.7em;">动态规划</a> <a href="/tags/%E5%8C%BA%E9%97%B4/" style="font-size: 0.65em;">区间</a> <a href="/tags/%E5%9D%90%E6%A0%87/" style="font-size: 0.6em;">坐标</a> <a href="/tags/%E5%A4%8D%E8%B5%9B/" style="font-size: 0.75em;">复赛</a> <a href="/tags/%E5%A4%AA%E5%B9%B3%E5%88%86/" style="font-size: 0.6em;">太平分</a> <a href="/tags/%E5%AE%81%E6%B3%A2/" style="font-size: 0.6em;">宁波</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/31/hexo-%E7%A7%BB%E6%A4%8D%E7%9B%B8%E5%85%B3/"><i class="fa  fa-book"></i> hexo 移植相关</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/09/15/refreshing-xiache/"><i class="fa  fa-book"></i> 重新维护博客的瞎扯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/05/11/zzerror15/"><i class="fa  fa-book"></i> 刷题与ZZ错误记录15</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/29/custom-livecd/"><i class="fa  fa-book"></i> 写一个OIerLinux——如何自定义一个LiveCD</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/22/h14z-live2d/"><i class="fa  fa-book"></i> 偷偷换掉Live2D小人……</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 zhtg的博客 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by zhtg.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>

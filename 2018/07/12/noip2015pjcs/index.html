@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>【NOIP2015普】初赛试卷分享 | zhtg的博客</title>
+  <meta name="author" content="zhtg" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="不要一分钱嘞！ 第二十一届全国青少年信息学奥林匹克联赛初赛 *普及组***C++**语言试题 竞赛时间：2015年10月11日****14:30-16:30   *一、单项选择题(共20题，每题1.5***分，共计30**分；每题有且仅有一个正确选项) 1．1MB等于(  )。 A.10000字节       B.1024字节 - C.1000×1000字节        D.1024×1024字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【NOIP2015普】初赛试卷分享">
+<meta property="og:url" content="https://zhtg.red/2018/07/12/noip2015pjcs/index.html">
+<meta property="og:site_name" content="zhtg的博客">
+<meta property="og:description" content="不要一分钱嘞！ 第二十一届全国青少年信息学奥林匹克联赛初赛 *普及组***C++**语言试题 竞赛时间：2015年10月11日****14:30-16:30   *一、单项选择题(共20题，每题1.5***分，共计30**分；每题有且仅有一个正确选项) 1．1MB等于(  )。 A.10000字节       B.1024字节 - C.1000×1000字节        D.1024×1024字">
+<meta property="og:locale">
+<meta property="og:image" content="https://zhtg.red/null">
+<meta property="article:published_time" content="2018-07-12T01:27:16.000Z">
+<meta property="article:modified_time" content="2021-06-03T10:01:01.835Z">
+<meta property="article:author" content="zhtg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhtg.red/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">zhtg的博客</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>zhtg的博客</h2> <br />
+                        <span>None</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">【NOIP2015普】初赛试卷分享</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2018-07-12</li>
+                    <li><i class="fa fa-user"></i> 作者 zhtg</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~4.36K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1622714461835"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <p>不要一分钱嘞！</p>
+<p><strong>第二十一届全国青少年信息学奥林匹克联赛初赛</strong></p>
+<p>*<em>普及组***</em>C++**<strong>语言试题</strong></p>
+<p><strong>竞赛时间：<strong><strong>2015</strong></strong>年<strong><strong>10</strong></strong>月<strong><strong>11</strong></strong>日****14:30-16:30</strong></p>
+<p>  *<em>一、单项选择题(<strong><strong>共20</strong></strong>题，每题1.5***</em>分，共计30**<strong>分；每题有且仅有一个正确选项)</strong> 1．1MB等于(  )。 A.10000字节       B.1024字节 - C.1000×1000字节        D.1024×1024字节  </p>
+<ol start="2">
+<li> 在PC机中，PENTIUM(奔腾)、酷睿、赛扬等 是指( )。</li>
+<li> A.生产厂家名称 B.硬盘型号 C.CPU的型号      D.显示器的型号。</li>
+</ol>
+<p> </p>
+<ol start="3">
+<li> 操作系统的作用是( )。</li>
+</ol>
+<p>A.把源程序译成目标程序        B.便于进行数据管理 C.控制和管理系统资源        D.实现硬件之间的连接  </p>
+<ol start="4">
+<li> 在计算机内部用来传送、存贮、加工处理的数据或指令都是以( )。</li>
+</ol>
+<p>A.二进制码      B.八进制码     C.十进制码      D.智能拼音码  </p>
+<ol start="5">
+<li> 下列说法正确的是( )。</li>
+</ol>
+<p>A.CPU的主要任务是执行数据运算和程序控制 B.存储器具有记忆能力，其中信息任何时候都不会丢失 C.两个显示器屏幕尺寸相同，则它们的分辨率必定相同 D.个人用户只能使用Wifi的方式连接到Internet  </p>
+<ol start="6">
+<li> 二进制数00100100和00010100的和是( )。</li>
+</ol>
+<p>A.00101000     B.01100111      C.01000100     D.00111000  </p>
+<ol start="7">
+<li> 与二进制小数0.1相等的十六进制数是( )。</li>
+</ol>
+<p>A.0.8     B.0.4     C.0.2     D.0.1  </p>
+<ol start="8">
+<li> 所谓的“中断”是指( )。</li>
+</ol>
+<p>A.操作系统随意停止一个程序的运行 B.当出现需要时，CPU暂时停止当前程序的执行转而执行处理新情况的过程 C.因停机而停止一个程序的运行 D.电脑死机  </p>
+<ol start="9">
+<li> 计算机病毒是( )。</li>
+</ol>
+<p>A.通过计算机传播的危害人体健康的一种病毒 B.人为制造的能够侵入计算机系统并给计算机带来故障的程序或指令集合 C.一种由于计算机元器件老化而产生的对生态环境有害的物质 D.利用计算机的海量高速运算能力而研制出来的用于疾病预防的新型病毒  </p>
+<ol start="10">
+<li> FTP可以用于( )。</li>
+</ol>
+<p>A.远程传输文件     B.发送电子邮件     C.浏览网页     D.网上聊天  </p>
+<ol start="11">
+<li> 下面哪种软件不属于即时通信软件( )。</li>
+</ol>
+<p>A.QQ       B.MSN       C.微信       D.P2P  </p>
+<ol start="12">
+<li> 6个顶点的连通图的最小生成树，其边数为( )。</li>
+</ol>
+<p>A.6       B.5       C.7       D.4  </p>
+<ol start="13">
+<li> 链表不具备的特点是( )。</li>
+</ol>
+<p>A.可随机访问任何一个元素 B.插入、删除操作不需要移动元素 C.无需事物估计存储空间大小 D.所需存储空间与存储元素个数成正比  </p>
+<ol start="14">
+<li> 线性表若采用链表存储结构，要求内存中可用存储单元地址( )。</li>
+<li> 必须连续 B.部分地址必须连续  C.一定不连续     D.连续不连续均可</li>
+</ol>
+<p> </p>
+<ol start="15">
+<li> 今有一空栈S，对下列待进栈的数据元素序列a，b，c，d，e，f依次进行进栈，进栈，出栈，进栈， 进栈，出栈的操作，则此操作完成后，栈S的栈顶元素为</li>
+<li> f B. c       C. a       D. b</li>
+</ol>
+<p> </p>
+<ol start="16">
+<li> 前序遍历序列与中序遍历序列相同的二叉树为( )。</li>
+</ol>
+<p>A.根结点无左子树 B.根结点无右子树 C.只有根结点的二叉树或非叶子结点只有左子树的二叉树 D.只有根结点的二叉树或非叶子结点只有右子树的二叉树  </p>
+<ol start="17">
+<li> 如果根的高度为1,具有61个结点的完全二叉树的高度为( )。</li>
+<li> 5 B. 6       C. 7       D. 8</li>
+</ol>
+<p> </p>
+<ol start="18">
+<li> 下列选项中不属于视频文件格式的是( )。</li>
+<li> TXT B. AVI C. MOV      D. RMVB</li>
+</ol>
+<p> </p>
+<ol start="19">
+<li> 设某算法的计算时间表示为递推关系式T(n) = T(n-1) + n (为正整数) 及T(0)=1，则该算法的时间复杂度为( )。</li>
+<li> O(logn) B. O(nlogn)     C. O(n)     D. O(n2)</li>
+</ol>
+<p> </p>
+<ol start="20">
+<li> 在NOI系列赛事中参赛选手必须使用累承办单位统一提供的设备。下列物品中不允许选手自带的是( )。</li>
+<li> 鼠标 B. 笔     C. 身份证     D. 准考证</li>
+</ol>
+<p>  <strong>二、问题求解(共2题，每题5分，共计10分；每题全部答对得5分，没有部分分)</strong></p>
+<ol>
+<li> 重新排列1234使得每一个数字都不在原来的位置上，一共有 种排法。</li>
+</ol>
+<p> </p>
+<ol start="2">
+<li> 一棵结点数为2015的二叉树最多有 个叶子结点。</li>
+</ol>
+<p>  <strong>三、阅读程序写结果**</strong>(<strong><strong>共</strong></strong>4<strong><strong>题，每题</strong></strong>8<strong><strong>分，共计</strong></strong>32<strong><strong>分</strong></strong>)** 1. #include using namespace std; int main() { int a, b, c; a = 1; b = 2; c = 3; if(a &gt; b) if(a &gt; c) cout &lt;&lt; a &lt;&lt; ‘ ‘; else cout &lt;&lt; b &lt;&lt; ‘ ‘; cout &lt;&lt; c &lt;&lt;endl; return 0; } 输出： .  </p>
+<p>#include using namespace std; struct point { int x; int y; }; int main() { int a, b, c; struct EX { int a; int b; point c; }e; e.a = 1; e.b = 2; e.c.x = e.a + e.b; e.c.y = e.a * e.b; cout &lt;&lt;e.c.x &lt;&lt; ‘,’ &lt;&lt;e.c.y &lt;&lt;endl; return 0; } 输出： .  </p>
+<p>#include #include using namespace std; int main() { string str; int i; int count; count = 0; getline(cin, str); for(i = 0; i &lt; str.length(); i++) if(str[i] &gt;= ‘a’ &amp;&amp; str[i] &lt;= ‘z’) count++; cout &lt;&lt; “It has “ &lt;&lt; count &lt;&lt; “ lowercases” &lt;&lt;endl; return 0; } 输入：NOI2016 will be held in Mian Yang. 输出： .   4. #include #include void fun(char *a, char *b) { a = b; (*a)++; } int main() { char c1, c2, *p1, *p2; c1 = ‘A’; c2 = ‘a’; p1 = &c1; p2 = &c2; fun(p1, p2); cout &lt;&lt; c1 &lt;&lt; c2 &lt;&lt;endl; return 0; } 输出：  . <strong>四、完善程序**</strong>(<strong><strong>共</strong></strong>2<strong><strong>题，每题</strong></strong>14<strong><strong>分，共计</strong></strong>28<strong><strong>分</strong></strong>)**</p>
+<ol>
+<li> (打印月历)输入月份m(1≤m≤12)，按一定格式打印2015年第m月的月历。(第三、四空2.5分， 其余3分)</li>
+</ol>
+<p>例如，2015年1月的月历打印效果如下(第一列为周日)： S       M     T       W     T       F       S 1       2       3 4       5       6       7       8       9       10 11     12     13     14     15     16     17 18     19     20     21     22     23     24 25     26     27     28     29     30     31   #include #include const int dayNum[] = {-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; int m, offset, i; int main() { cin &gt;&gt; m; cout &lt;&lt; “S\tM\tT\tW\tT\tF\tS” &lt;&lt;endl; //‘\t’为TAB制表符 ; （1） ； for(i = 1; i &lt; m; i++) offset = （2） ; for(i = 0; i &lt; offset; i++) cout &lt;&lt; ‘\t’; for(i = 1; （3） ; i++) { cout &lt;&lt; （4） ； ; if(i == dayNum[m] （5） )  cout &lt;&lt;endl; else  cout &lt;&lt; ‘\t’; } return 0; }  </p>
+<ol start="2">
+<li> (中位数median) 给定n (n为奇数且小于1000) 个整数，整数的范围在0~m (0&lt;m&lt;2^31) 之间，请使用二分法求这n个整数的中位数。所谓中位数，是指将这n个数排序之后，排在正中间的数。(第五空2 分，其余3分)</li>
+</ol>
+<p>  #include using namespace std; const int MAXN = 1000; int n, i, lbound, rbound, mid, m, count; int x[MAXN]; int main() { cin &gt;&gt;n &gt;&gt; m; for(i = 0; i &lt;n; i++) cin &gt;&gt; x[i]; lbound = 0; rbound = m; while( （1）  ) { mid = (lbound + rbound) / 2; （2） ; for(i = 0; i &lt;n; i++) if( （3） )       （4）  ; if(count &gt;n / 2) lbound = mid + 1; else   （5） ; } cout &lt;&lt;rbound &lt;&lt;endl; return 0; }</p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://zhtg.red/2018/07/12/noip2015pjcs/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://zhtg.red/2018/07/12/noip2015pjcs/";
+            const title         = "「【NOIP2015普】初赛试卷分享」";
+            const excerpt       = `不要一分钱嘞！
+第二十一届全国青少年信息学奥林匹克联赛初赛
+*普及组***C++**语言试题
+竞赛时间：2015年10月11日****14:30-16:30
+  *一、单项选择题(共20题，每题1.5***分，共计30**分；每题有且...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-06-03</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 动态规划练习【仅题目】" href="/2018/08/05/dp-practice/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">准高三咸鱼，AFO的OIer</p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OIer%E4%B9%8B%E8%B7%AF/">OIer之路</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E5%88%B7%E7%9C%9F%E9%A2%98/">刷刷真题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E5%B1%B1%E7%89%B9%E9%81%A3%E9%98%9F/">后山特遣队</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%9E%E5%BF%86%E4%B8%9C%E5%8D%97/">回忆东南</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E6%80%AA%E9%A2%98%E7%9B%AE/">奇怪题目</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/">好好学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%99%BE%E6%80%81/">生活百态</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%A4%87%E5%BF%98%E5%BD%95/">算法备忘录</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8F%8A%E8%90%BD%E5%87%A4%E8%B5%B7/">菊落凤起</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%A3%E9%A2%98%E6%97%A5%E5%BF%97/">解题日志</a><span class="category-list-count">31</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2013/" style="font-size: 0.65em;">2013</a> <a href="/tags/2014/" style="font-size: 0.6em;">2014</a> <a href="/tags/2015/" style="font-size: 0.6em;">2015</a> <a href="/tags/GUIDE/" style="font-size: 0.6em;">GUIDE</a> <a href="/tags/Linux/" style="font-size: 0.6em;">Linux</a> <a href="/tags/NOILinux/" style="font-size: 0.6em;">NOILinux</a> <a href="/tags/NOIP/" style="font-size: 0.8em;">NOIP</a> <a href="/tags/Ubuntu/" style="font-size: 0.6em;">Ubuntu</a> <a href="/tags/arbiter/" style="font-size: 0.6em;">arbiter</a> <a href="/tags/bfs/" style="font-size: 0.6em;">bfs</a> <a href="/tags/livecd/" style="font-size: 0.6em;">livecd</a> <a href="/tags/%E5%88%9D%E8%B5%9B/" style="font-size: 0.6em;">初赛</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 0.7em;">动态规划</a> <a href="/tags/%E5%8C%BA%E9%97%B4/" style="font-size: 0.65em;">区间</a> <a href="/tags/%E5%9D%90%E6%A0%87/" style="font-size: 0.6em;">坐标</a> <a href="/tags/%E5%A4%8D%E8%B5%9B/" style="font-size: 0.75em;">复赛</a> <a href="/tags/%E5%A4%AA%E5%B9%B3%E5%88%86/" style="font-size: 0.6em;">太平分</a> <a href="/tags/%E5%AE%81%E6%B3%A2/" style="font-size: 0.6em;">宁波</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/31/hexo-%E7%A7%BB%E6%A4%8D%E7%9B%B8%E5%85%B3/"><i class="fa  fa-book"></i> hexo 移植相关</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/09/15/refreshing-xiache/"><i class="fa  fa-book"></i> 重新维护博客的瞎扯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/05/11/zzerror15/"><i class="fa  fa-book"></i> 刷题与ZZ错误记录15</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/29/custom-livecd/"><i class="fa  fa-book"></i> 写一个OIerLinux——如何自定义一个LiveCD</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/22/h14z-live2d/"><i class="fa  fa-book"></i> 偷偷换掉Live2D小人……</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 zhtg的博客 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by zhtg.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>

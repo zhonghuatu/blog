@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>noip2014 普及组模拟赛 | zhtg的博客</title>
+  <meta name="author" content="zhtg" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="2014, NOIP, 复赛, 普及组, 模拟题" />
+  
+  <meta name="description" content="原作者bx2k，种花兔对此稍作了改编     题目名称 阶乘 宣传委员 游历东南 密码 可执行文件名 factorial segment tree lcs 输入文件名 factorial.in segment.in tree.in lcs.in 输出文件名 factorial.out segment.out tree.out lcs.out 每个测试点时限 1s 1s 1s 1s 内存限制 512">
+<meta property="og:type" content="article">
+<meta property="og:title" content="noip2014 普及组模拟赛">
+<meta property="og:url" content="https://zhtg.red/2018/11/03/noip2014-%E6%99%AE%E5%8F%8A%E7%BB%84%E6%A8%A1%E6%8B%9F%E8%B5%9B/index.html">
+<meta property="og:site_name" content="zhtg的博客">
+<meta property="og:description" content="原作者bx2k，种花兔对此稍作了改编     题目名称 阶乘 宣传委员 游历东南 密码 可执行文件名 factorial segment tree lcs 输入文件名 factorial.in segment.in tree.in lcs.in 输出文件名 factorial.out segment.out tree.out lcs.out 每个测试点时限 1s 1s 1s 1s 内存限制 512">
+<meta property="og:locale">
+<meta property="og:image" content="https://zhtg.red/null">
+<meta property="article:published_time" content="2018-11-03T02:01:38.000Z">
+<meta property="article:modified_time" content="2021-06-03T10:01:02.023Z">
+<meta property="article:author" content="zhtg">
+<meta property="article:tag" content="NOIP">
+<meta property="article:tag" content="复赛">
+<meta property="article:tag" content="普及组">
+<meta property="article:tag" content="模拟题">
+<meta property="article:tag" content="2014">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhtg.red/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">zhtg的博客</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>zhtg的博客</h2> <br />
+                        <span>None</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">noip2014 普及组模拟赛</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2018-11-03</li>
+                    <li><i class="fa fa-user"></i> 作者 zhtg</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~3.80K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1622714462023"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <p>原作者bx2k，种花兔对此稍作了改编    </p>
+<p>题目名称</p>
+<p>阶乘</p>
+<p>宣传委员</p>
+<p>游历东南</p>
+<p>密码</p>
+<p>可执行文件名</p>
+<p>factorial</p>
+<p>segment</p>
+<p>tree</p>
+<p>lcs</p>
+<p>输入文件名</p>
+<p>factorial.in</p>
+<p>segment.in</p>
+<p>tree.in</p>
+<p>lcs.in</p>
+<p>输出文件名</p>
+<p>factorial.out</p>
+<p>segment.out</p>
+<p>tree.out</p>
+<p>lcs.out</p>
+<p>每个测试点时限</p>
+<p>1s</p>
+<p>1s</p>
+<p>1s</p>
+<p>1s</p>
+<p>内存限制</p>
+<p>512MB</p>
+<p>512MB</p>
+<p>512MB</p>
+<p>512MB</p>
+<p>测试点数目</p>
+<p>10</p>
+<p>10</p>
+<p>10</p>
+<p>10</p>
+<p>每个测试点分值</p>
+<p>10</p>
+<p>10</p>
+<p>10</p>
+<p>10</p>
+<p>是否有部分分</p>
+<p>否</p>
+<p>否</p>
+<p>否</p>
+<p>否</p>
+<p>题目类型</p>
+<p>传统型</p>
+<p>传统型</p>
+<p>传统型</p>
+<p>传统型</p>
+<p>是否有附加文件</p>
+<p>否</p>
+<p>否</p>
+<p>否</p>
+<p>否</p>
+<p>      提交源程序须加后缀</p>
+<p>对于Pascal语言</p>
+<p>factorial.pas</p>
+<p>segment.pas</p>
+<p>tree.pas</p>
+<p>lcs.pas</p>
+<p>对于C    语言</p>
+<p>factorial.c</p>
+<p>segment.c</p>
+<p>tree.c</p>
+<p>lcs.c</p>
+<p>对于C++  语言</p>
+<p>factorial.cpp</p>
+<p>segment.cpp</p>
+<p>tree.cpp</p>
+<p>lcs.cpp</p>
+<p>    注意：最终测试时，所有编译命令均不打开任何优化开关，第三题请小心爆栈。请大家在每题输出最后加上一个换行符。 每一题都是要使用文件输入输出的，请注意。如果不会文件输入输出，请见附录。</p>
+<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>【问题背景】 暑假的某一天，种花兔在做暑假作业。突然，他发现他有一题不会做……(因为他已经笑傻了233333333)   【问题描述】 题目会给定n，需要你球出(1!+2!+3!+…+n!)对233333333取模的结果。   【输入格式】 从factorial.in读入数据，数据仅包含一行。第一行包含一个数字n。   【输出格式】 输出到factorial.out。输出(1!+2!+3!+…+n!)对233333333取模的结果   【样例输入】 10   【样例输出】 4037913   【样例说明】 (1!+2!+3!+…+10!)%233333333=(1+2+6+…+3628800)%233333333=4037913 (%就是取模，pascal中是mod)   【数据范围与约定】 对于1-5测试点，n&lt;=103 对于6-8测试点，n&lt;=106 对于9-10测试点，n&lt;=109</p>
+<h1 id="宣传委员"><a href="#宣传委员" class="headerlink" title="宣传委员"></a>宣传委员</h1><p>【问题背景】 写完暑假作业后，种花兔去找小红（又名张廼莹（划掉），红色歌手、装逼佬一枚）玩。小红表示他要去东南唱红歌宣传马哲思想，于是种花兔准备跟着去围观。   【问题描述】 小红把即将接受宣传的人排成一行，每个人从左到右的编号为1-n。每个人有一个信仰值，一开始所有人的信仰值为0。接着小红会做以下两件事之一： 1.小红进行马列☭主义的宣传。具体来说，小红会使第l个人到第r个人之间的所有人的信仰值增加k。 2.小红想知道马列☭主义是否深入人心。具体来说，小红会问种花兔第l个人到第 r个人之间所有人的信仰值之和。 身为一个马列☭主义的拥护者，种花兔自然会帮小红来算。但是种花兔太笨了，根本不会算。于是他想找你来帮忙。   【输入格式】 从segment.in读入数据。第一行包含两个整数n,m。分别表示接受宣传的人数以及小红的操作数。 接下来m行，每行包含若干个整数。若第一个整数为1，则代表小红在进行宣传，这一行接下来会包含l,r,k三个整数。否则第一个整数为2，代表小红的一个询问，这一行接下来会包含l,r两个整数。   【输出格式】 向segment.out输出数据。输出若干行，每行包含1个整数，表示小红询问的答案。行数为小红的询问数量。           【样例输入】 5 5 2 1 2 1 4 4 2 1 2 4 7</p>
+<ul>
+<li>  4 5 6</li>
+<li>  3 4</li>
+</ul>
+<p>  【样例输出】 0 22   【样例说明】 一开始所有人的信仰值都为0，所以答案为0。到第五个操作时，五个人的信仰值分别为0,7,7,15,6。则答案为7+15=22   【数据范围与约定】 对于1-3测试点，n,m&lt;=10 对于4-5测试点，n,m&lt;=103 对于6-8测试点，没有宣传操作。 对于所有测试点，n&lt;=109 , m&lt;=103 , 0&lt;l&lt;=r&lt;=n , k&lt;=10</p>
+<h1 id="游历东南"><a href="#游历东南" class="headerlink" title="游历东南"></a>游历东南</h1><p>【问题背景】 因为有你的帮忙，小红宣传马列☭主义过程中的询问不需要种花兔来算了。趁这个时间，种花兔开始游历东南。   【问题描述】 东南人民热爱树（因为树上不仅有香泡，树的颜色在大部分时候都跟校服一样的绿），所以他们的城市也是树形的。种花兔在东南有很多喜欢的地点对(u,v)，于是他用步伐测量出了每个地点对的距离。做完这个任务后，他回去告诉了小红。小红表示仅仅是距离太弱了，他觉得种花兔应该把地点对之间所有道路的异或和(如果你不知道异或和是啥，请看提示)球出来。种花兔已经不想再走了，于是他把东南的地图告诉你，让你来帮他完成任务。   【输入格式】 从tree.in读入数据。第一行包含两个整数n,m，代表东南有n个地点，种花兔有m个喜欢的地点对。接下来n-1行，每行包含3个整数u,v,k，代表地点u到地点v 之间有一条长度为k的双向道路。接下来m行，每行包含两个整数u,v，代表种花兔喜欢的地点对。   【输出格式】 向tree.out输出数据。输出包括m行，每i行代表第i个地点对之间所有道路的异或和。 【样例输入】 5 5 1 25431 1 25971 3 11525 4 9170 3 3 1 2 1   【样例输出】 11525 3799 25431 1572 18550   【样例解释】 第二个地点对5,3之间会经过长度分别为9170,11525的两条道路， 9170^11525=3799。其他答案依次类推。   【数据范围与约定】 对于1-3测试点，n,m&lt;=10 对于4-7测试点，n,m&lt;=103 对于1-9测试点，除1号点外，每个点i均与floor(i/2)有边。 对于所有测试点，n,m,k&lt;=105, u,v&lt;=n       【提示】 异或是一种位运算，在c, c++中是^，在pascal中是xor。 具体来说，0^0=0,0^1=1,1^0=0,1^1=0。两个整数的异或值是指把这两个数变成二进制(高位补0)，然后每一位进行异或。(例如4^5=100^101=001=1)一些数的异或和就是把这些数按顺序异或起来。(例如4^5^3=(4^5)^3=1^3=2) Floor(i)表示i的下取整结果，即小于等于i的最大的整数，如floor(3.5)=3</p>
+<h1 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h1><p>【题目背景】 从东南回来后，小红编制了一本毛泽东思想问答手册。听说米粒家的特大总领对毛的思想起了兴趣但美帝对中特产生了敌意，小红决定与种花兔一起编密码来将手册加密以免被某些人盗走。   【题目描述】 小红的编制密码方法是这样的，他先让他自己和种花兔选各一个1-n的排列，然后小红会将这两个排列的最长公共子序列作为密码。种花兔想知道这个密码的长度，又不想告诉你密码，于是他就把这两个排列做了适当改动后来问你。   【输入格式】 从lcs.in读入数据。第一行包含一个数n。第二行包含一个1-n的排列，代表适当改动后的种花兔的排列。第三行包含一个1-n的排列，代表适当改动后的小红的排列。   【输出格式】 向lcs.out输出数据。输出包含一行，第一行包含一个数ans，代表这两个排列的最长公共子序列的长度。   【样例输入】 5 4 5 1 2 3 1 4 2 5 3   【样例输出】 3         【样例解释】 {1,2,3}为一个最长公共子序列，长度为3。   【数据范围与约定】 对于1-3测试点，n&lt;=5 对于4-7测试点，n&lt;=103 对于8-10测试点，n&lt;=105   【提示】 一个序列S，如果分别是两个或多个已知序列的子序列，且是所有符合此条件序列中最长的，则S称为已知序列的最长公共子序列。例如bd是bed与bad的最长公共子序列。 在一个已知序列S中按顺序提取出其中的几项形成A，则称A是S的子序列。 比如bce是#a#b#c#d#e#的子序列。   附录：文件输入输出 以下均以第一题为例。 C++: #include<cstdio> … int main() { freopen(“factorial.in”,”r”,stdin);        freopen(“factorial.out”,”w”,stdout); …. } C: #include&lt;stdio.h&gt; … int main() { freopen(“factorial.in”,”r”,stdin);        freopen(“factorial.out”,”w”,stdout); …. } P: … assign(input,’factorial.in’); reset(input); assign(output,’factorial.out’); rewrite(output); … close(input); close(output); …</p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://zhtg.red/2018/11/03/noip2014-%E6%99%AE%E5%8F%8A%E7%BB%84%E6%A8%A1%E6%8B%9F%E8%B5%9B/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://zhtg.red/2018/11/03/noip2014-%E6%99%AE%E5%8F%8A%E7%BB%84%E6%A8%A1%E6%8B%9F%E8%B5%9B/";
+            const title         = "「noip2014 普及组模拟赛」";
+            const excerpt       = `原作者bx2k，种花兔对此稍作了改编    
+题目名称
+阶乘
+宣传委员
+游历东南
+密码
+可执行文件名
+factorial
+segment
+tree
+lcs
+输入文件名
+factorial.in
+segment.in
+tree.in
+l...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/2014/" rel="tag">2014</a>, <a class="tag-none-link" href="/tags/NOIP/" rel="tag">NOIP</a>, <a class="tag-none-link" href="/tags/%E5%A4%8D%E8%B5%9B/" rel="tag">复赛</a>, <a class="tag-none-link" href="/tags/%E6%99%AE%E5%8F%8A%E7%BB%84/" rel="tag">普及组</a>, <a class="tag-none-link" href="/tags/%E6%A8%A1%E6%8B%9F%E9%A2%98/" rel="tag">模拟题</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-06-03</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" noip2015 普及组模拟赛" href="/2018/11/03/204/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 那年东南那些事(密码为我们班的状元)" href="/2019/06/22/那年东南那些事/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">准高三咸鱼，AFO的OIer</p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OIer%E4%B9%8B%E8%B7%AF/">OIer之路</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E5%88%B7%E7%9C%9F%E9%A2%98/">刷刷真题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E5%B1%B1%E7%89%B9%E9%81%A3%E9%98%9F/">后山特遣队</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%9E%E5%BF%86%E4%B8%9C%E5%8D%97/">回忆东南</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E6%80%AA%E9%A2%98%E7%9B%AE/">奇怪题目</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/">好好学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%99%BE%E6%80%81/">生活百态</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%A4%87%E5%BF%98%E5%BD%95/">算法备忘录</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8F%8A%E8%90%BD%E5%87%A4%E8%B5%B7/">菊落凤起</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%A3%E9%A2%98%E6%97%A5%E5%BF%97/">解题日志</a><span class="category-list-count">31</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2013/" style="font-size: 0.65em;">2013</a> <a href="/tags/2014/" style="font-size: 0.6em;">2014</a> <a href="/tags/2015/" style="font-size: 0.6em;">2015</a> <a href="/tags/GUIDE/" style="font-size: 0.6em;">GUIDE</a> <a href="/tags/Linux/" style="font-size: 0.6em;">Linux</a> <a href="/tags/NOILinux/" style="font-size: 0.6em;">NOILinux</a> <a href="/tags/NOIP/" style="font-size: 0.8em;">NOIP</a> <a href="/tags/Ubuntu/" style="font-size: 0.6em;">Ubuntu</a> <a href="/tags/arbiter/" style="font-size: 0.6em;">arbiter</a> <a href="/tags/bfs/" style="font-size: 0.6em;">bfs</a> <a href="/tags/livecd/" style="font-size: 0.6em;">livecd</a> <a href="/tags/%E5%88%9D%E8%B5%9B/" style="font-size: 0.6em;">初赛</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 0.7em;">动态规划</a> <a href="/tags/%E5%8C%BA%E9%97%B4/" style="font-size: 0.65em;">区间</a> <a href="/tags/%E5%9D%90%E6%A0%87/" style="font-size: 0.6em;">坐标</a> <a href="/tags/%E5%A4%8D%E8%B5%9B/" style="font-size: 0.75em;">复赛</a> <a href="/tags/%E5%A4%AA%E5%B9%B3%E5%88%86/" style="font-size: 0.6em;">太平分</a> <a href="/tags/%E5%AE%81%E6%B3%A2/" style="font-size: 0.6em;">宁波</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/31/hexo-%E7%A7%BB%E6%A4%8D%E7%9B%B8%E5%85%B3/"><i class="fa  fa-book"></i> hexo 移植相关</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/09/15/refreshing-xiache/"><i class="fa  fa-book"></i> 重新维护博客的瞎扯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/05/11/zzerror15/"><i class="fa  fa-book"></i> 刷题与ZZ错误记录15</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/29/custom-livecd/"><i class="fa  fa-book"></i> 写一个OIerLinux——如何自定义一个LiveCD</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/22/h14z-live2d/"><i class="fa  fa-book"></i> 偷偷换掉Live2D小人……</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 zhtg的博客 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by zhtg.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>

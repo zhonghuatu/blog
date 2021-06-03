@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>浅谈分块在信息学算法的应用 | zhtg的博客</title>
+  <meta name="author" content="zhtg" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="引语在信息学奥赛或其他的算法应用中，我们常常会用到分治算法的思想来优化我们的程序。分治算法，顾名思义，就是“将一个规模为$N$的问题分解为$K$个规模较小的子问题，这些子问题相互独立且与原问题性质相同。求出子问题的解，就可得到原问题的解。**[1]**”。分块算法就是一种优秀的通过分治思想来优化的算法。分块算法不仅常数与线段树相比非常的小，而且块内可以嵌套其他数据结构，拓展性极强。 从基础中看分块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈分块在信息学算法的应用">
+<meta property="og:url" content="https://zhtg.red/2019/12/04/yingcai-lunwen/index.html">
+<meta property="og:site_name" content="zhtg的博客">
+<meta property="og:description" content="引语在信息学奥赛或其他的算法应用中，我们常常会用到分治算法的思想来优化我们的程序。分治算法，顾名思义，就是“将一个规模为$N$的问题分解为$K$个规模较小的子问题，这些子问题相互独立且与原问题性质相同。求出子问题的解，就可得到原问题的解。**[1]**”。分块算法就是一种优秀的通过分治思想来优化的算法。分块算法不仅常数与线段树相比非常的小，而且块内可以嵌套其他数据结构，拓展性极强。 从基础中看分块">
+<meta property="og:locale">
+<meta property="og:image" content="https://zhtg.red/null">
+<meta property="article:published_time" content="2019-12-04T07:48:52.000Z">
+<meta property="article:modified_time" content="2021-06-03T10:01:02.068Z">
+<meta property="article:author" content="zhtg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhtg.red/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">zhtg的博客</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>zhtg的博客</h2> <br />
+                        <span>None</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">浅谈分块在信息学算法的应用</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2019-12-04</li>
+                    <li><i class="fa fa-user"></i> 作者 zhtg</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~5.67K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1622714462068"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <h2 id="引语"><a href="#引语" class="headerlink" title="引语"></a>引语</h2><p>在信息学奥赛或其他的算法应用中，我们常常会用到分治算法的思想来优化我们的程序。分治算法，顾名思义，就是“将一个规模为$N$的问题分解为$K$个规模较小的子问题，这些子问题相互独立且与原问题性质相同。求出子问题的解，就可得到原问题的解。**[1]**”。分块算法就是一种优秀的通过分治思想来优化的算法。分块算法不仅常数与线段树相比非常的小，而且块内可以嵌套其他数据结构，拓展性极强。</p>
+<h2 id="从基础中看分块"><a href="#从基础中看分块" class="headerlink" title="从基础中看分块"></a>从基础中看分块</h2><h3 id="引题："><a href="#引题：" class="headerlink" title="引题："></a>引题：</h3><p>给出一个长为$n$的数列，以及$m$个操作，操作涉及区间加法，单点查值。 以下默认$n$是$10^5$级别的数。</p>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>这是一道能用许多数据结构优化的经典题，可以用不同数据结构来进行优化，比如说线段树：只要操作于询问区间能快速合并，只要操作与询问满足区间性质，线段树就可以以时间复杂度为$O(n\log n)$出色地完成这道题。 然而，线段树最明显的弊端就是代码太长、常数太大，若对于线段树不是很熟悉可能要调试很长时间才能调试出一个满意的结果。 这时，在数据不太大的情况下，我们可以用分块算法解决这个问题。</p>
+<h3 id="分块的初步介绍"><a href="#分块的初步介绍" class="headerlink" title="分块的初步介绍"></a>分块的初步介绍</h3><p>分块算法，就是将一个序列中每$m$个元素打包成一个整体（块），这些块没有相交的部分，然后对这个整体进行维护，只记录这个整体的有关信息，这样当我们需要访问整个块中的元素时，我们可以直接把维护好的信息直接调用，已达到优化算法的目的。 比如说，对于一个数组$ai$，里面有初始值为$1,2,3,…,99,100$的$100$个数，现在我们要求找出第40个数的值，我们可以直接调用$ai[40]$，然而当我们需要区间修改第$a=32$个数到第$b=56$个数，使它们都加上$c=10$。如果使用朴素算法，我们需要直接从第$32$个数开始遍历每一个数到第$56$个：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addUp_1</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    <span class="comment">//此处我们令a=32,b=56,c=10</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=a;i&lt;=b;i++)&#123;</span><br><span class="line">        ai[i]+=c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个朴素算法的时间复杂度为$O(NM)$（$M$为查询次数）若a,b的范围足够大，在大量的修改和查询下，这个时间复杂度就有些不可接受。 这时我们可以使用分块算法，此处我们可以将$m=5$个元素分为一块，预先维护好块中所有元素的和，这样共把区间分为$\lfloor \frac{m}{n}\rfloor$个完整的块。对于一个查询，查询区间内有若干块完整的块，并且两侧还有不完整的块，这些块只有一部分包含于区间内，不能以整一块的方式来直接获取这一块的和。 若$m=5$，则区间被分为如下几块：</p>
+<p>序号</p>
+<p>1-5</p>
+<p>6-10</p>
+<p>……</p>
+<p>96-100</p>
+<p>区间中的每一个数作为整体编辑时的增加值（以下简称为“增加值”）</p>
+<p>0</p>
+<p>0</p>
+<p>……</p>
+<p>0</p>
+<p>对应元素</p>
+<p>1,2,3,4,5</p>
+<p>6,7,8,9,10</p>
+<p>96,97,98,99,100</p>
+<p>对于上述的$a=32,b=56,c=10$的情况，我们可以将修改变成这样：</p>
+<p>序号</p>
+<p>32-35</p>
+<p>36-40</p>
+<p>……</p>
+<p>51-55</p>
+<p>56</p>
+<p>增加值</p>
+<p>0</p>
+<p>10</p>
+<p>10</p>
+<p>10</p>
+<p>0</p>
+<p>对应元素在列表中的值</p>
+<p>32 <strong>+10=42</strong>,33 <strong>+10=43</strong>,……,35 <strong>+10=45</strong></p>
+<p>36,37,38,39,40</p>
+<p>51,52,53,54,55</p>
+<p>56 <strong>+10=66</strong></p>
+<p>我们在对区间整体做加法操作时，涉及到了{31-35}、【36-40】、【41-45】……【51-55】、{56-60} 这些块。用“{}”注明的块因为不完全包括在区间内，所以我们要对这些元素进行逐一修改；但是对于用“【】”注明的块因作为一个整体被调用，所以我们可以不去逐一修改块中的每一个值，而是打上一个标记，注明区间中的每一个数作为整体编辑时的增加值，这样我们就可以省去了对于完整的块的逐一修改操作。对于一个点的值的查询，我们可以直接使用“块中记录的‘增加值’+自身在修改中被修改成的值”来求得单点的值。</p>
+<h3 id="分块的初步运用"><a href="#分块的初步运用" class="headerlink" title="分块的初步运用"></a>分块的初步运用</h3><blockquote>
+<h3 id="搬寝室-2"><a href="#搬寝室-2" class="headerlink" title="搬寝室 [2]"></a>搬寝室 <strong>[2]</strong></h3><ol>
+<li> 一段走廊在一定时间内只允许一位同学通过（从$1$寝室到$5$寝室与从$2$寝室到$4$寝室是不能同时进行的；为了方便，从$1$寝室到$4$寝室与从$4$寝室到$5$寝室也是不能同时进行的；原寝室和目标寝室相同也是合法的）;</li>
+<li> 我们假定每次搬东西所需要的时间都为$1$.</li>
+</ol>
+<p><strong>求：</strong> 从开始搬东西起，最少要经过多少时间他才能到绿茵场上。</p>
+<h3 id="数据规模："><a href="#数据规模：" class="headerlink" title="数据规模："></a>数据规模：</h3><p>对于$30\%$的数据，$N\leq 20,M\leq 20$ 对于$60\%$的数据，$N\leq 2000,M\leq 2000$ 对于$80\%$的数据，$N\leq 100000,M\leq 200000$ 对于$100\%$的数据，$N\leq maxlongint,M\leq 200000$</p>
+</blockquote>
+<p>对于这道题，我们可以发现，答案就是所有寝室被经过的次数中的最大值。此处重点是最大值的计算，所以此处将证明略过。<strong>[3]</strong> 对于此处的计算，我们定义两个数组<code>stk[]</code>（保存一个块的‘增加值’）和<code>ss[]</code>（保存具体的每一个数，用于不完整的块的逐一修改）。我们要一一修改的区间其实就是$[a , (\frac{a-1}{M+1})\times M]$ 和 $[(\frac{b-1}{M}) \times M+1,b]$，并且对于每一个数$i$，其对应的块的序号应为$\frac{i-1}{M}+1$，所以对于区间内的整块，我们可以直接修改$[\frac{a-1}{M}+2, \frac{b-1}{M}]$的块标记，最后再通过<code>ans = max(ans,ss[i]+stk[(i-1)/DN+1]);</code>求得最终的答案。</p>
+<h2 id="使用分块储存答案"><a href="#使用分块储存答案" class="headerlink" title="使用分块储存答案"></a>使用分块储存答案</h2><blockquote>
+<h3 id="简单的问题"><a href="#简单的问题" class="headerlink" title="简单的问题"></a>简单的问题</h3><p>统计$[a,b]$内素数的个数。 $1\leq a \leq b \leq 100000000$。</p>
+</blockquote>
+<p>大多数人一开始的反应就是通过简单的素数筛来求出$[1,b]$内的所有素数然后加起来。先不说统计所有的素数时需要一个<code>bool flag[100000001]</code>，数组很大不一定满足题目的空间限制，而且在极端情况下，就算我们只是从$99999999$算到$100000000$，为了素数筛我们也要从2开始筛素数。这时候，我们可以事先维护好每一块区域内的素数和，然后在需要的时候直接调用。但是对于区间两边的不完整的块又该如何处理？我们可以把筛分成两部分，一部分用于筛出合适的因数，一部分用于在选定的范围内找出合适的数。</p>
+<h2 id="分多少块比较合适？"><a href="#分多少块比较合适？" class="headerlink" title="分多少块比较合适？"></a>分多少块比较合适？</h2><p>分块的数量会直接影响到分块的效率问题，如果每一块中的序列数量过大，那么对于两边的不完整的块逐一修改常数将会变大；而如果分块的数量太多，那么对于分块的处理常数也会变大。经过实验，当分的块数在$\sqrt{n}$时效率最高。 相关的数学证明引用了HeRaNO的《关于分块时间复杂度的证明》**[4]**： <img src="https://s2.ax1x.com/2019/12/04/QlyTbQ.jpg" alt="QlyTbQ.jpg"> <img src="https://s2.ax1x.com/2019/12/04/Ql6Mad.jpg" alt="Ql6Mad.jpg"></p>
+<h2 id="分块的相关拓展"><a href="#分块的相关拓展" class="headerlink" title="分块的相关拓展"></a>分块的相关拓展</h2><h3 id="询问区间内小于某个值-x-的元素个数"><a href="#询问区间内小于某个值-x-的元素个数" class="headerlink" title="询问区间内小于某个值 $x$ 的元素个数"></a>询问区间内小于某个值 $x$ 的元素个数</h3><p>有了上一部分的经验，我们可以发现，数列分块问题实际上有三样东西需要我们思考：</p>
+<ol>
+<li> <strong>不完整的块</strong>的$O(\sqrt{N})$个元素怎么处理？</li>
+<li> $O(\sqrt{N})$个<strong>整块</strong>怎么处理？</li>
+<li> 要<strong>预处理什么信息（复杂度不能超过后面的操作）？</strong></li>
+</ol>
+<p>我们先来思考只有询问操作的情况</p>
+<ol>
+<li> <strong>不完整的块：</strong> 枚举即可。</li>
+<li> <strong>整块：</strong> 要在每个整块里寻找小于$x$的元素数量时，我们不得不要求块内元素有序，这样我们可以通过二分法对块内排序。</li>
+</ol>
+<p>我们可以进行如下预处理：将所有分好的块内部进行快速排序，复杂度$O(n\log \frac{n}{m})$，每次查询需要在$\frac{n}{m}$个块内使用二分法，在不完整的$2m$个元素里直接枚举求解。 这样总的复杂度为$O(n\frac{n}{m}\log \frac{n}{m}+nm)$，如果$m=\sqrt{n}$的话，总复杂度为$O(n\sqrt{n}\log n)$，在实际测试时$m$取$2\sqrt{n}$左右时效果更好。 如果算上区间加，维护一个标记$tag$，对于不完整的块需要逐一枚举并且重新排序，复杂度略；对于完整的块，二分查询小于$x-tag$的元素个数。</p>
+<h3 id="询问区间内小于某个值-x-的前驱（比其小的最大元素）"><a href="#询问区间内小于某个值-x-的前驱（比其小的最大元素）" class="headerlink" title="询问区间内小于某个值 $x$ 的前驱（比其小的最大元素）"></a>询问区间内小于某个值 $x$ 的前驱（比其小的最大元素）</h3><p>接着上一个部分的解法，其实只要把块内查询二分稍作修改，对于一个块保留块内的前驱，最后一起比较即可。</p>
+<h3 id="在块内插入其他数据结构"><a href="#在块内插入其他数据结构" class="headerlink" title="在块内插入其他数据结构"></a>在块内插入其他数据结构</h3><p>上一部分实际上具有一个启发意义：可以在块内维护其他的数据结构使其更具有拓展性，比如对于查找“比其大的最小元素”，在分好的块内放一个$STL$中的<code>set</code>，这样我们可以直接调用<code>upper_bound()</code>来查询，降低时间复杂度。</p>
+<h3 id="区间加法，区间求和"><a href="#区间加法，区间求和" class="headerlink" title="区间加法，区间求和"></a>区间加法，区间求和</h3><p>这一部分不完整的块还是枚举求解，不过我们可以对完整的块进行预处理求和，用类似于标记的做法，直接根据块内元素计算增量。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>综上所述，分块算法拥有常数小、可拓展性强等优点，虽然分块算法相对于其他算法解决特定问题时间复杂度可能相对较劣，但是嵌套其他数据结构等方法可以让分块从一个朴素的根号算法升格为一个通用性的解题方法。</p>
+<h2 id="备注："><a href="#备注：" class="headerlink" title="备注："></a>备注：</h2><h3 id="文章中引用的参考文献-及-相关备注"><a href="#文章中引用的参考文献-及-相关备注" class="headerlink" title="文章中引用的参考文献 及 相关备注"></a>文章中引用的参考文献 及 相关备注</h3><ol>
+<li> 分治算法定义 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/3263297">(https://baike.baidu.com/item/分治算法/3263297)</a></li>
+<li> 后山OnlineJudge P1400 搬寝室 (move) <a target="_blank" rel="noopener" href="https://oj.zhtg.red/p/1400">(https://oj.zhtg.red/p/1400)</a></li>
+<li> 证明其实也不复杂，经过同一个寝室的任务不能同时进行，所以完成所有经过次寝室的任务至少要过其被经过的次数个单位的时间。 <img src="https://s2.ax1x.com/2019/12/03/QMhjjP.jpg" alt="QMhjjP.jpg"></li>
+<li> HeRaNO 分块的复杂度证明 <a target="_blank" rel="noopener" href="https://blog.csdn.net/HeRaNO/article/details/55219560">(https://blog.csdn.net/HeRaNO/article/details/55219560)</a></li>
+</ol>
+<h3 id="致谢-及-其他参考文献："><a href="#致谢-及-其他参考文献：" class="headerlink" title="致谢 及 其他参考文献："></a>致谢 及 其他参考文献：</h3><p>感谢hzwer在该课题上对我的启发和指导，感谢李建江、班轩等各位竞赛教练对我的培育与支持。 罗剑桥《浅谈分块思想在一类数据处理问题中的应用》 董永建 董欣然等 《信息学奥赛一本通·提高篇》 搬寝室 相关代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DN 632</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> stk[<span class="number">700</span>],ss[<span class="number">400005</span>],n,m,cnt=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,tmp,s[<span class="number">400005</span>],r=<span class="number">0</span>,rr=<span class="number">1</span>;</span><br><span class="line">pair&lt;<span class="keyword">long</span> <span class="keyword">long</span>,<span class="keyword">long</span> <span class="keyword">long</span>&gt; pi[<span class="number">200005</span>];</span><br><span class="line">map&lt;<span class="keyword">long</span> <span class="keyword">long</span>,<span class="keyword">int</span>&gt; pp;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="comment">//数据的初始化</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b) <span class="built_in">swap</span>(a,b);</span><br><span class="line">        pi[i]=<span class="built_in">make_pair</span>(a,b);</span><br><span class="line">        s[++r]=a;s[++r]=b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(s+<span class="number">1</span>,s+r+<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//离散化处理</span></span><br><span class="line">    <span class="keyword">while</span>(rr&lt;=r)&#123;</span><br><span class="line">        <span class="keyword">while</span>(s[rr<span class="number">-1</span>]==s[rr])rr++;</span><br><span class="line">        <span class="keyword">if</span>(rr&gt;r)<span class="keyword">break</span>;</span><br><span class="line">        pp[s[rr]]=++cnt;</span><br><span class="line">        rr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        a = pp[pi[i].first];</span><br><span class="line">        b = pp[pi[i].second];</span><br><span class="line">        <span class="comment">//对于长度小于2n的区间可以直接枚举</span></span><br><span class="line">        <span class="keyword">if</span>(b-a+<span class="number">1</span>&lt;=DN*<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=a;j&lt;=b;j++)&#123;</span><br><span class="line">                ss[j]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//对于区间左边的不完整块的处理（枚举）</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=a;j&lt;=((a<span class="number">-1</span>)/DN+<span class="number">1</span>)*DN;j++)&#123;</span><br><span class="line">                ss[j]++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//对于完整块的处理（打标记）</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=(a<span class="number">-1</span>)/DN+<span class="number">2</span>;j&lt;=(b<span class="number">-1</span>)/DN;j++)&#123;</span><br><span class="line">                stk[j]++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//对于区间右边的不完整块的处理（枚举）</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=((b<span class="number">-1</span>)/DN)*DN+<span class="number">1</span>;j&lt;=b;j++)&#123;</span><br><span class="line">                ss[j]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//最终处理</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,ss[i]+stk[(i<span class="number">-1</span>)/DN+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://zhtg.red/2019/12/04/yingcai-lunwen/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://zhtg.red/2019/12/04/yingcai-lunwen/";
+            const title         = "「浅谈分块在信息学算法的应用」";
+            const excerpt       = `引语在信息学奥赛或其他的算法应用中，我们常常会用到分治算法的思想来优化我们的程序。分治算法，顾名思义，就是“将一个规模为$N$的问题分解为$K$个规模较小的子问题，这些子问题相互独立且与原问题性质相同。求出子问题的解，就可得到原问题的...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-06-03</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 默写线段树的艰难历程" href="/2019/11/26/默写线段树的艰难历程/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 准备期末考试ing" href="/2019/12/16/准备期末考试ing/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">准高三咸鱼，AFO的OIer</p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OIer%E4%B9%8B%E8%B7%AF/">OIer之路</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E5%88%B7%E7%9C%9F%E9%A2%98/">刷刷真题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E5%B1%B1%E7%89%B9%E9%81%A3%E9%98%9F/">后山特遣队</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%9E%E5%BF%86%E4%B8%9C%E5%8D%97/">回忆东南</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E6%80%AA%E9%A2%98%E7%9B%AE/">奇怪题目</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/">好好学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%99%BE%E6%80%81/">生活百态</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%A4%87%E5%BF%98%E5%BD%95/">算法备忘录</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8F%8A%E8%90%BD%E5%87%A4%E8%B5%B7/">菊落凤起</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%A3%E9%A2%98%E6%97%A5%E5%BF%97/">解题日志</a><span class="category-list-count">31</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2013/" style="font-size: 0.65em;">2013</a> <a href="/tags/2014/" style="font-size: 0.6em;">2014</a> <a href="/tags/2015/" style="font-size: 0.6em;">2015</a> <a href="/tags/GUIDE/" style="font-size: 0.6em;">GUIDE</a> <a href="/tags/Linux/" style="font-size: 0.6em;">Linux</a> <a href="/tags/NOILinux/" style="font-size: 0.6em;">NOILinux</a> <a href="/tags/NOIP/" style="font-size: 0.8em;">NOIP</a> <a href="/tags/Ubuntu/" style="font-size: 0.6em;">Ubuntu</a> <a href="/tags/arbiter/" style="font-size: 0.6em;">arbiter</a> <a href="/tags/bfs/" style="font-size: 0.6em;">bfs</a> <a href="/tags/livecd/" style="font-size: 0.6em;">livecd</a> <a href="/tags/%E5%88%9D%E8%B5%9B/" style="font-size: 0.6em;">初赛</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 0.7em;">动态规划</a> <a href="/tags/%E5%8C%BA%E9%97%B4/" style="font-size: 0.65em;">区间</a> <a href="/tags/%E5%9D%90%E6%A0%87/" style="font-size: 0.6em;">坐标</a> <a href="/tags/%E5%A4%8D%E8%B5%9B/" style="font-size: 0.75em;">复赛</a> <a href="/tags/%E5%A4%AA%E5%B9%B3%E5%88%86/" style="font-size: 0.6em;">太平分</a> <a href="/tags/%E5%AE%81%E6%B3%A2/" style="font-size: 0.6em;">宁波</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/31/hexo-%E7%A7%BB%E6%A4%8D%E7%9B%B8%E5%85%B3/"><i class="fa  fa-book"></i> hexo 移植相关</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/09/15/refreshing-xiache/"><i class="fa  fa-book"></i> 重新维护博客的瞎扯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/05/11/zzerror15/"><i class="fa  fa-book"></i> 刷题与ZZ错误记录15</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/29/custom-livecd/"><i class="fa  fa-book"></i> 写一个OIerLinux——如何自定义一个LiveCD</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2020/03/22/h14z-live2d/"><i class="fa  fa-book"></i> 偷偷换掉Live2D小人……</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 zhtg的博客 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by zhtg.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
